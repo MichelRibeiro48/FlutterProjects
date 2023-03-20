@@ -6,6 +6,7 @@ void main() {
 }
 
 class InputPage extends StatefulWidget {
+  const InputPage({super.key});
   @override
   _InputPage createState() => _InputPage();
 }
@@ -16,7 +17,6 @@ class _InputPage extends State<InputPage> {
   void onPressed() {
     setState(() {
       valorFixo = _valor * 0.1 + _valor;
-      _valor = 0;
     });
   }
 
