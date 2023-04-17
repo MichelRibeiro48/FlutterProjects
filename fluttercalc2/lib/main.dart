@@ -14,9 +14,10 @@ class InputPage extends StatefulWidget {
 class _InputPage extends State<InputPage> {
   double _valor = 0;
   double valorFixo = 0;
+  double porcentagem = 0;
   void onPressed() {
     setState(() {
-      valorFixo = _valor * 0.1 + _valor;
+      valorFixo = _valor * porcentagem / 100 + _valor;
     });
   }
 
@@ -51,6 +52,23 @@ class _InputPage extends State<InputPage> {
                 ),
               ),
               Padding(
+                padding: const EdgeInsets.only(top: 8, left: 16),
+                child: SizedBox(
+                  width: 250,
+                  child: TextField(
+                    onChanged: (text) {
+                      porcentagem = double.parse(text);
+                    },
+                    decoration: const InputDecoration(
+                      labelText: 'Porcentagem',
+                      border: OutlineInputBorder(),
+                    ),
+                    keyboardType: TextInputType.number,
+                    textInputAction: TextInputAction.done,
+                  ),
+                ),
+              ),
+              Padding(
                 padding: const EdgeInsets.only(left: 16, top: 10),
                 child: SizedBox(
                   width: 250,
@@ -59,7 +77,7 @@ class _InputPage extends State<InputPage> {
                     style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.black,
                         backgroundColor: Colors.grey),
-                    child: const Text('CALCULAR COM 10%'),
+                    child: const Text('Calcular'),
                   ),
                 ),
               ),
@@ -68,7 +86,7 @@ class _InputPage extends State<InputPage> {
                 child: Text(
                     style: const TextStyle(
                         fontWeight: FontWeight.bold, fontSize: 20),
-                    'Conta com 10% = $valorFixo'),
+                    'Valor Total R\$ $valorFixo'),
               ),
             ],
           ),
